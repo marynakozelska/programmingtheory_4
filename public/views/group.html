@@ -1,0 +1,59 @@
+<body>
+<!-- CSS -->
+<link rel="stylesheet" href="/libs/bootstrap/dist/css/bootstrap.min.css">
+<!-- JS -->
+<script src="/libs/angular/angular.min.js"></script>
+<script src="/libs/angular-route/angular-route.min.js"></script>
+
+<div class="bg-success p-2 text-dark bg-opacity-10" ng-app="" ng-controller="GroupController">
+    <h2 class="text-center">Groups</h2>
+    <p class="text-center">{{message}}</p>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Name</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+            <td>
+                <input class="form-control" id="name" ng-model="group.name">
+            </td>
+            <td>
+                <button class="btn-primary" ng-click="addGroup()">Add Group</button>
+            </td>
+        </tr>
+
+        <tr ng-repeat="group in groups">
+            <td>{{ group.name }}</td>
+            <td>
+                <button class="btn-info" ng-click="delete(group._id)">Delete</button>
+            </td>
+            <td>
+                <button class="btn-info" ng-click="edit( group)" id="bt">Edit</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <tbody>
+        <tr id='edit-group' style="display: none">
+            <td>
+                <input class="nameG" id="nameG" value="Group" type="text"/>
+            </td>
+            <td>
+                <button class="btn-info " ng-click="save()">Save</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!--<script type="text/javascript">-->
+<!--  angular.module('GroupController', []);-->
+<!--</script>-->
+
+<!--<script src="/js/controllers/GroupController.js"></script>-->
+</body>

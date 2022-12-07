@@ -1,0 +1,62 @@
+<body>
+<!-- CSS -->
+<link rel="stylesheet"
+      href="/libs/bootstrap/dist/css/bootstrap.min.css">
+<!-- JS -->
+<script src="/libs/angular/angular.min.js"></script>
+<script src="/libs/angular-route/angular-route.min.js"></script>
+
+<div class="bg-success p-2 text-dark bg-opacity-10" ng-app="" ng-controller="StudentController">
+    <h2 class="text-center">Students</h2>
+    <p class="text-center">{{message}}</p>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <td>
+                <input class="form-control" placeholder="Name" ng-model="student.name" id="student_name" maxlength="160">
+                <input class="form-control" placeholder="Lastname" ng-model="student.lastname" id="student_lastname"
+                       maxlength="160">
+                <input class="form-control" ng-model="student.birthday " id="student_bday"
+                       placeholder="/\d\d/\d\d/\d\d\d\d/" type="date">
+                <input class="form-control" placeholder="Group" ng-model="student.group " id="student_group" maxlength="160" minlength="2">
+                <button class="btn-primary" ng-click="addStudent(response)">Add Student</button>
+            </td>
+        </tr>
+
+        <tr ng-repeat="student in students">
+            <td>{{ student.name }}</td>
+            <td>{{ student.lastname }}</td>
+            <td>{{ student.birthday }}</td>
+            <td>{{ student.group }}</td>
+            <td>
+                <button class="btn-info" ng-click="delete(student._id)">Delete</button>
+            </td>
+            <td>
+                <button class="btn-info" ng-click="edit(student)" id="bt">Edit</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <tbody>
+        <tr id='edit-student' style="display: none">
+            <td><input class="form-control name" id="name" type="text"/></td>
+            <td><input class="form-control lastname" id="lastname" type="text"/></td>
+            <td><input class="form-control birthday" id="birthday" type="text"/></td>
+            <td><input class="form-control group" id="group" type="text"/></td>
+            <td>
+                <button class="form-control btn-info " ng-click="save()">Save</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+<script type="text/javascript">
+    angular.module('StudentController', []);
+</script>
+
+<script src="/js/controllers/StudentController.js"></script>
+</body>
